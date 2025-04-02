@@ -2,91 +2,71 @@
 This project is a real-time sign language translator that uses AI to detect hand gestures via a webcam and convert them into text and speech. 
 It utilizes React for the frontend, TensorFlow.js for AI-based recognition, and MediaPipe Hands for hand tracking.
 
-1️⃣ Project Features
-✅ Real-time sign language recognition
-✅ Converts hand gestures into text
-✅ Text-to-speech (TTS) for spoken output
-✅ User-friendly UI with a live camera feed
+<h3>1️⃣ Project Features</h3>
+<p>✅ Real-time sign language recognition<br>
+✅ Converts hand gestures into text<br>
+✅ Text-to-speech (TTS) for spoken output<br>
+✅ User-friendly UI with a live camera feed<br>
 ✅ Supports American Sign Language (ASL) (can be expanded to other sign languages)
 
-2️⃣ Tech Stack
-Frontend
-React.js – UI development
-Tailwind CSS – Styling
-Webcam API – Captures video input
-Speech Synthesis API – Converts text to speech
+<h3>2️⃣ Tech Stack</h3>
+Frontend<br>
+React.js – UI development<br>
+Tailwind CSS – Styling<br>
+Webcam API – Captures video input<br>
+Speech Synthesis API – Converts text to speech<br>
 
-AI & ML
-TensorFlow.js – Deep learning for sign recognition
-MediaPipe Hands – Hand tracking
-Pre-trained Models – Recognizes hand gestures
+<h3>3️⃣AI & ML</h3>
+TensorFlow.js – Deep learning for sign recognition<br>
+MediaPipe Hands – Hand tracking<br>
+Pre-trained Models – Recognizes hand gestures<br>
 
-3️⃣ Project Architecture
-1️⃣ Webcam Input – Captures the live hand movement
-2️⃣ Hand Detection – MediaPipe detects keypoints of the hand
-3️⃣ Feature Extraction – Extracts hand landmark coordinates
-4️⃣ Model Processing – TensorFlow.js interprets gestures
-5️⃣ Text Output – Converts gestures to text
-6️⃣ Speech Output – Reads the detected text using TTS
+<h3>4️⃣Project Architecture</h3>
 
-4️⃣ Project Setup
-Step 1: Initialize React App
-npx create-react-app sign-language-translator
-cd sign-language-translator
-npm install
+1️⃣ Webcam Input – Captures the live hand movement<br>
+2️⃣ Hand Detection – MediaPipe detects keypoints of the hand<br>
+3️⃣ Feature Extraction – Extracts hand landmark coordinates<br>
+4️⃣ Model Processing – TensorFlow.js interprets gestures<br>
+5️⃣ Text Output – Converts gestures to text<br>
+6️⃣ Speech Output – Reads the detected text using TTS<br>
 
-Step 2: Install Dependencies
-npm install @tensorflow/tfjs @tensorflow-models/handpose
-npm install @mediapipe/hands
-npm install react-webcam
+<h3>5️⃣ Project Setup</h3>
+<h4>Step 1: Initialize React App</h4>
+npx create-react-app sign-language-translator<br>
+cd sign-language-translator<br>
+npm install<br>
 
-Step 3: Setup Webcam
-import React from "react";
-import Webcam from "react-webcam";
+<h4>Step 2: Install Dependencies</h4>
+npm install @tensorflow/tfjs @tensorflow-models/handpose<br>
+npm install @mediapipe/hands<br>
+npm install react-webcam<br>
 
-const App = () => {
-  return (
-    <div className="flex justify-center items-center h-screen">
-      <Webcam />
-    </div>
-  );
-};
-export default App;
+<h4>Step 3: Setup Webcam</h4>
+import React from "react";<br>
+import Webcam from "react-webcam";<br>
 
-Step 4: Detect Hands with MediaPipe
-Use MediaPipe Hands to detect landmarks (21 points on the hand).
-Connect it with TensorFlow.js to recognize gestures.
-import * as handpose from "@tensorflow-models/handpose";
-import "@tensorflow/tfjs";
+<h4>Step 4: Detect Hands with MediaPipe</h4>
+Use MediaPipe Hands to detect landmarks (21 points on the hand).<br>
+Connect it with TensorFlow.js to recognize gestures.<br>
+import * as handpose from "@tensorflow-models/handpose";<br>
+import "@tensorflow/tfjs";<br>
 
-const detectHands = async (webcamRef) => {
-  const model = await handpose.load();
-  const video = webcamRef.current.video;
+const detectHands = async (webcamRef) => {<br>
+  const model = await handpose.load();<br>
+  const video = webcamRef.current.video;<br>
 
-  setInterval(async () => {
-    const hand = await model.estimateHands(video);
-    console.log(hand);
-  }, 100);
-};
-
-Step 5: Convert Gestures to Text
-Use a pre-trained model or custom ML logic to classify hand gestures.
-const interpretSign = (hand) => {
-  if (hand.length > 0) {
-    // Extract keypoints
-    const landmarks = hand[0].landmarks;
-
-    // Example: Detect if hand is making an "A" sign
-    if (landmarks[8][1] < landmarks[6][1]) {
-      return "A";
-    }
-  }
-  return "";
-};
+  setInterval(async () => {<br>
+    const hand = await model.estimateHands(video);<br>
+    console.log(hand);<br>
+  }, 100);<br>
+};<br>
+<br>
+<h4>Step 5: Convert Gestures to Text</h4>
+Use a pre-trained model or custom ML logic to classify hand gestures.<br>
 
 
-Step 6: Text-to-Speech (TTS)
-Use Speech Synthesis API to read out the detected text.
+<h4>Step 6: Text-to-Speech (TTS)</h4>
+Use Speech Synthesis API to read out the detected text.<br>
 const speak = (text) => {
   const speech = new SpeechSynthesisUtterance(text);
   window.speechSynthesis.speak(speech);
