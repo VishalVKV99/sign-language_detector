@@ -2,6 +2,8 @@
 This project is a real-time sign language translator that uses AI to detect hand gestures via a webcam and convert them into text and speech. 
 It utilizes React for the frontend, TensorFlow.js for AI-based recognition, and MediaPipe Hands for hand tracking.
 
+<img src="public/demo.png" alt="ScreenShot"/>
+
 <h3>1️⃣ Project Features</h3>
 <p>✅ Real-time sign language recognition<br>
 ✅ Converts hand gestures into text<br>
